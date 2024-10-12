@@ -1,0 +1,39 @@
+[12Oct2024 16:48:34.947] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgedatauserdev, --assetIndex, 5, --assetsDir, C:\Users\aidan\.gradle\caches\forge_gradle\assets, --gameDir, ., --fml.forgeVersion, 47.3.11, --fml.mcVersion, 1.20.1, --fml.forgeGroup, net.minecraftforge, --fml.mcpVersion, 20230612.114412, --mod, errorlib, --all, --output, C:\Users\aidan\OneDrive\Documents\MC\Mods\ErrorLib\Forge\ErrorLib-1.20.1\src\generated\resources, --existing, C:\Users\aidan\OneDrive\Documents\MC\Mods\ErrorLib\Forge\ErrorLib-1.20.1\src\main\resources]
+[12Oct2024 16:48:34.953] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.0.9+10.0.9+main.dcd20f30 starting: java version 17.0.12 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[12Oct2024 16:48:35.086] [main/WARN] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Configuration file C:\Users\aidan\OneDrive\Documents\MC\Mods\ErrorLib\Forge\ErrorLib-1.20.1\run-data\config\fml.toml is not correct. Correcting
+[12Oct2024 16:48:35.088] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowSkipGLVersions] was corrected from null to []
+[12Oct2024 16:48:35.088] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowLogHelpMessage] was corrected from null to true
+[12Oct2024 16:48:35.089] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowSquir] was corrected from null to false
+[12Oct2024 16:48:35.089] [main/INFO] [net.minecraftforge.fml.loading.FMLConfig/CORE]: Incorrect key [earlyWindowShowCPU] was corrected from null to false
+[12Oct2024 16:48:35.113] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forgedatauserdev
+[12Oct2024 16:48:35.181] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=union:/C:/Users/aidan/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar%23128!/ Service=ModLauncher Env=CLIENT
+[12Oct2024 16:48:35.600] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\aidan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.20.1-47.3.11\427f703e065645e6ab0d183bfaee6253f474393d\javafmllanguage-1.20.1-47.3.11.jar is missing mods.toml file
+[12Oct2024 16:48:35.606] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\aidan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.20.1-47.3.11\f59825d2e5d797a1bb3699876861d9f5cd616ad0\lowcodelanguage-1.20.1-47.3.11.jar is missing mods.toml file
+[12Oct2024 16:48:35.612] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\aidan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\mclanguage\1.20.1-47.3.11\6624469b892cf7349addc8c7272ba0f9c1628e3f\mclanguage-1.20.1-47.3.11.jar is missing mods.toml file
+[12Oct2024 16:48:35.618] [main/WARN] [net.minecraftforge.fml.loading.moddiscovery.ModFileParser/LOADING]: Mod file C:\Users\aidan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\fmlcore\1.20.1-47.3.11\19742efc9b2d4063f19579d80f99579725e034eb\fmlcore-1.20.1-47.3.11.jar is missing mods.toml file
+[12Oct2024 16:48:35.802] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: Found 1 dependencies adding them to mods collection
+[12Oct2024 16:48:37.388] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[12Oct2024 16:48:37.394] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgedatauserdev' with arguments [--gameDir, ., --assetsDir, C:\Users\aidan\.gradle\caches\forge_gradle\assets, --assetIndex, 5, --mod, errorlib, --all, --output, C:\Users\aidan\OneDrive\Documents\MC\Mods\ErrorLib\Forge\ErrorLib-1.20.1\src\generated\resources, --existing, C:\Users\aidan\OneDrive\Documents\MC\Mods\ErrorLib\Forge\ErrorLib-1.20.1\src\main\resources]
+[12Oct2024 16:48:37.811] [main/INFO] [mixin/]: Remapping refMap geckolib.refmap.json using C:\Users\aidan\OneDrive\Documents\MC\Mods\ErrorLib\Forge\ErrorLib-1.20.1\build\createSrgToMcp\output.srg
+[12Oct2024 16:48:38.227] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [errorlib]
+[12Oct2024 16:48:43.381] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 47.3.11, for MC 1.20.1 with MCP 20230612.114412
+[12Oct2024 16:48:43.382] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v47.3.11 Initialized
+[12Oct2024 16:48:43.455] [modloading-worker-0/WARN] [software.bernie.geckolib.GeckoLib/]: Minecraft.getInstance() was null, could not register reload listeners
+[12Oct2024 16:48:43.581] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager...
+[12Oct2024 16:48:43.588] [modloading-worker-0/INFO] [mezz.jei.library.load.PluginCaller/]: Sending ConfigManager took 5.027 ms
+[12Oct2024 16:48:44.000] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/aidan/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.11_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.3.11_mapped_parchment_2023.09.03-1.20.1.jar%23191!/assets/.mcassetsroot' uses unexpected schema
+[12Oct2024 16:48:44.001] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/aidan/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.20.1-47.3.11_mapped_parchment_2023.09.03-1.20.1/forge-1.20.1-47.3.11_mapped_parchment_2023.09.03-1.20.1.jar%23191!/data/.mcassetsroot' uses unexpected schema
+[12Oct2024 16:48:44.172] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Recipes
+[12Oct2024 16:48:44.175] [main/INFO] [net.minecraft.data.DataGenerator/]: Recipes finished after 2 ms
+[12Oct2024 16:48:44.176] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Loot Tables
+[12Oct2024 16:48:44.188] [main/INFO] [net.minecraft.data.DataGenerator/]: Loot Tables finished after 12 ms
+[12Oct2024 16:48:44.188] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Block States: errorlib
+[12Oct2024 16:48:44.188] [main/INFO] [net.minecraft.data.DataGenerator/]: Block States: errorlib finished after 0 ms
+[12Oct2024 16:48:44.189] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Item Models: errorlib
+[12Oct2024 16:48:44.189] [main/INFO] [net.minecraft.data.DataGenerator/]: Item Models: errorlib finished after 0 ms
+[12Oct2024 16:48:44.189] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:block mod id errorlib
+[12Oct2024 16:48:44.334] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:block mod id errorlib finished after 144 ms
+[12Oct2024 16:48:44.334] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Tags for minecraft:item mod id errorlib
+[12Oct2024 16:48:44.335] [main/INFO] [net.minecraft.data.DataGenerator/]: Tags for minecraft:item mod id errorlib finished after 0 ms
+[12Oct2024 16:48:44.335] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 163 ms
+[12Oct2024 16:48:44.339] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 0, old count: 0, new count: 1, removed stale: 0, written: 0
