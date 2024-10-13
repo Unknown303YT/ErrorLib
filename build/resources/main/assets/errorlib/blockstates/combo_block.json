@@ -1,0 +1,9 @@
+{
+  "variants": {
+    "": { "model": "errorlib:block/combo_block" },
+    "facing=north": { "model": "errorlib:block/combo_block" },
+    "facing=south": { "model": "errorlib:block/combo_block", "y": 180 },
+    "facing=west": { "model": "errorlib:block/combo_block", "y": 270 },
+    "facing=east": { "model": "errorlib:block/combo_block", "y": 90 }
+  }
+}

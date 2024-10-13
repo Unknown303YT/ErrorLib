@@ -1,6 +1,8 @@
 package com.riverstone.unknown303.errorlib.datagen.statesandmodels;
 
 import com.riverstone.unknown303.errorlib.ErrorMod;
+import com.riverstone.unknown303.errorlib.blocks.ModBlocks;
+import com.riverstone.unknown303.errorlib.items.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -17,7 +19,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-
+        simpleItem(ModItems.CORRUPTED_HEART);
+        simpleBlockItem(ModBlocks.COMBO_BLOCK);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

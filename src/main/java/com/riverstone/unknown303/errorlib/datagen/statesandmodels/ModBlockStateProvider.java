@@ -1,6 +1,7 @@
 package com.riverstone.unknown303.errorlib.datagen.statesandmodels;
 
 import com.riverstone.unknown303.errorlib.ErrorMod;
+import com.riverstone.unknown303.errorlib.blocks.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
@@ -14,7 +15,6 @@ public class ModBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-
     }
 
     private void blockWithItem(RegistryObject<Block> blockRegistryObject) {

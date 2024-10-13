@@ -1,6 +1,7 @@
 package com.riverstone.unknown303.errorlib.items;
 
 import com.riverstone.unknown303.errorlib.ErrorMod;
+import com.riverstone.unknown303.errorlib.blocks.ModBlocks;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
@@ -16,10 +17,11 @@ public class ModCreativeTabs {
 
     public static final RegistryObject<CreativeModeTab> ERROR_TAB =
             CREATIVE_TABS.register("error_tab",
-                    () -> CreativeModeTab.builder().icon(() -> new ItemStack(Blocks.CRAFTING_TABLE)) //Example
+                    () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.CORRUPTED_HEART.get()))
                             .title(Component.translatable("creativetab.errorlib.error_tab"))
                             .displayItems((pParameters, pOutput) -> {
-                                pOutput.accept(Blocks.CRAFTING_TABLE); //Example
+                                pOutput.accept(ModItems.CORRUPTED_HEART.get());
+                                pOutput.accept(ModBlocks.COMBO_BLOCK.get());
                             })
                             .build());
 

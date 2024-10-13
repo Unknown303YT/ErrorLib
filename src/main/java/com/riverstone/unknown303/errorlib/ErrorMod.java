@@ -1,6 +1,7 @@
 package com.riverstone.unknown303.errorlib;
 
 import com.mojang.logging.LogUtils;
+import com.riverstone.unknown303.errorlib.api.CustomRegistries;
 import com.riverstone.unknown303.errorlib.blocks.ModBlocks;
 import com.riverstone.unknown303.errorlib.items.ModCreativeTabs;
 import com.riverstone.unknown303.errorlib.items.ModItems;
@@ -14,6 +15,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.openjdk.nashorn.internal.runtime.regexp.joni.Warnings;
 import org.slf4j.Logger;
 import software.bernie.geckolib.GeckoLib;
 
@@ -25,6 +27,8 @@ public class ErrorMod {
 
     public ErrorMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        CustomRegistries.register(modEventBus);
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
