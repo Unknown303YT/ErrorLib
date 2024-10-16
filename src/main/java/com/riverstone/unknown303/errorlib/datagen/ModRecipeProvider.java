@@ -24,27 +24,27 @@ public class ModRecipeProvider extends RecipeProvider implements IConditionBuild
 
     @Override
     protected void buildRecipes(Consumer<FinishedRecipe> pWriter) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CORRUPTED_HEART.get(), 1)
-                .pattern("RCR")
-                .pattern("DSD")
-                .pattern("RCR")
-                .define('R', Items.WITHER_ROSE)
-                .define('C', Items.COAL)
-                .define('D', Items.DEEPSLATE)
-                .define('S', Items.NETHER_STAR)
-                .unlockedBy(getHasName(Items.NETHER_STAR), has(Items.NETHER_STAR))
-                .save(pWriter);
-        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.COMBO_BLOCK.get(), 1)
-                .pattern("IBI")
-                .pattern("ACF")
-                .pattern("IBI")
-                .define('I', Blocks.IRON_BLOCK)
-                .define('B', Items.BUCKET)
-                .define('A', Blocks.ANVIL)
-                .define('C', Blocks.CRAFTING_TABLE)
-                .define('F', Blocks.FURNACE)
-                .unlockedBy(getHasName(Blocks.IRON_BLOCK), has(Blocks.IRON_BLOCK))
-                .save(pWriter);
+//        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModItems.CORRUPTED_HEART.get(), 1)
+//                .pattern("RCR")
+//                .pattern("DSD")
+//                .pattern("RCR")
+//                .define('R', Items.WITHER_ROSE)
+//                .define('C', Items.COAL)
+//                .define('D', Items.DEEPSLATE)
+//                .define('S', Items.NETHER_STAR)
+//                .unlockedBy(getHasName(Items.NETHER_STAR), has(Items.NETHER_STAR))
+//                .save(pWriter);
+//        ShapedRecipeBuilder.shaped(RecipeCategory.MISC, ModBlocks.COMBO_BLOCK.get(), 1)
+//                .pattern("IBI")
+//                .pattern("ACF")
+//                .pattern("IBI")
+//                .define('I', Blocks.IRON_BLOCK)
+//                .define('B', Items.BUCKET)
+//                .define('A', Blocks.ANVIL)
+//                .define('C', Blocks.CRAFTING_TABLE)
+//                .define('F', Blocks.FURNACE)
+//                .unlockedBy(getHasName(Blocks.IRON_BLOCK), has(Blocks.IRON_BLOCK))
+//                .save(pWriter);
     }
 
     protected static void oreSmelting(Consumer<FinishedRecipe> pFinishedRecipeConsumer, List<ItemLike> pIngredients, RecipeCategory pCategory, ItemLike pResult, float pExperience, int pCookingTIme, String pGroup) {

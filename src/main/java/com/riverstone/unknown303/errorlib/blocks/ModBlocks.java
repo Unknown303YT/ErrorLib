@@ -20,8 +20,8 @@ public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, ErrorMod.MOD_ID);
 
-    public static final RegistryObject<Block> COMBO_BLOCK = registerBlock("combo_block",
-            () -> new ComboBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).instabreak().noOcclusion()));
+//    public static final RegistryObject<Block> COMBO_BLOCK = registerBlock("combo_block",
+//            () -> new ComboBlock(BlockBehaviour.Properties.copy(Blocks.IRON_BLOCK).instabreak().noOcclusion()));
 
     private static <T extends Block> RegistryObject<T> registerBlock(String name, Supplier<T> block) {
         RegistryObject<T> toReturn = BLOCKS.register(name, block);

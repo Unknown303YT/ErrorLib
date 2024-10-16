@@ -19,8 +19,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        simpleItem(ModItems.CORRUPTED_HEART);
-        simpleBlockItem(ModBlocks.COMBO_BLOCK);
+//        simpleItem(ModItems.CORRUPTED_HEART);
+//        simpleBlockItem(ModBlocks.COMBO_BLOCK);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

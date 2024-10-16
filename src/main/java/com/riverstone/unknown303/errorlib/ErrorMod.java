@@ -15,18 +15,16 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import org.openjdk.nashorn.internal.runtime.regexp.joni.Warnings;
 import org.slf4j.Logger;
-import software.bernie.geckolib.GeckoLib;
 
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(ErrorMod.MOD_ID)
 public class ErrorMod {
     public static final String MOD_ID = "errorlib";
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
-    public ErrorMod() {
-        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+    public ErrorMod(FMLJavaModLoadingContext context) {
+        IEventBus modEventBus = context.getModEventBus();
 
         CustomRegistries.register(modEventBus);
 
@@ -34,8 +32,6 @@ public class ErrorMod {
         ModBlocks.register(modEventBus);
 
         ModCreativeTabs.register(modEventBus);
-
-        GeckoLib.initialize();
 
         modEventBus.addListener(this::commonSetup);
 

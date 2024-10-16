@@ -12,9 +12,9 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, ErrorMod.MOD_ID);
 
-    public static final RegistryObject<Item> CORRUPTED_HEART = ITEMS.register("corrupted_heart",
-            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)
-                    .stacksTo(1).fireResistant()));
+//    public static final RegistryObject<Item> CORRUPTED_HEART = ITEMS.register("corrupted_heart",
+//            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)
+//                    .stacksTo(1).fireResistant()));
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

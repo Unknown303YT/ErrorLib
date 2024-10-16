@@ -9,17 +9,15 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
 public class HorseArmorRegistry implements CustomRegistries.CustomRegistry {
-    String modId;
     final DeferredRegister<Item> HORSE_ARMOR_ITEMS;
     ResourceLocation registryId;
 
     public HorseArmorRegistry(String modId, String registryPath) {
-        this.modId = modId;
         this.registryId = new ResourceLocation(modId, registryPath);
         HORSE_ARMOR_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, modId);
     }
 
-    public RegistryObject<Item> registerHorseArmorItem(String name, ArmorMaterial material,
+    public RegistryObject<Item> registerHorseArmor(ArmorMaterial material,
                                                        Item.Properties properties) {
         int protection;
         if (material.getDefenseForType(ArmorItem.Type.CHESTPLATE) +
@@ -31,8 +29,8 @@ public class HorseArmorRegistry implements CustomRegistries.CustomRegistry {
             protection = material.getDefenseForType(ArmorItem.Type.CHESTPLATE) +
                     material.getDefenseForType(ArmorItem.Type.BOOTS);
         }
-        return HORSE_ARMOR_ITEMS.register(name,
-                () -> new HorseArmorItem(protection, name, properties));
+        return HORSE_ARMOR_ITEMS.register(material.getName() + "_horse_armor",
+                () -> new HorseArmorItem(protection, material.getName(), properties));
     }
 
     @Override

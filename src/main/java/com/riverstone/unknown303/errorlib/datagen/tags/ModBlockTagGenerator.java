@@ -18,9 +18,9 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
-        this.tag(BlockTags.NEEDS_IRON_TOOL)
-                .add(ModBlocks.COMBO_BLOCK.get());
-        this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(ModBlocks.COMBO_BLOCK.get());
+//        this.tag(BlockTags.NEEDS_IRON_TOOL)
+//                .add(ModBlocks.COMBO_BLOCK.get());
+//        this.tag(BlockTags.MINEABLE_WITH_PICKAXE)
+//                .add(ModBlocks.COMBO_BLOCK.get());
     }
 }
