@@ -2,7 +2,11 @@ package com.riverstone.unknown303.errorlib.items;
 
 import com.riverstone.unknown303.errorlib.ErrorMod;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.item.SmithingTemplateItem;
+import net.minecraft.world.item.armortrim.TrimPattern;
+import net.minecraft.world.item.armortrim.TrimPatterns;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -15,6 +19,9 @@ public class ModItems {
 //    public static final RegistryObject<Item> CORRUPTED_HEART = ITEMS.register("corrupted_heart",
 //            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)
 //                    .stacksTo(1).fireResistant()));
+
+//    TrimPattern;
+//    TrimPatterns
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
