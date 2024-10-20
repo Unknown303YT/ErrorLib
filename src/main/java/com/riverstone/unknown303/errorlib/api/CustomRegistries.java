@@ -10,8 +10,9 @@ import java.util.List;
 public class CustomRegistries {
     static List<CustomRegistry> registries = new ArrayList<>();
 
-    public static void addRegistry(CustomRegistry registry) {
+    public static CustomRegistry addRegistry(CustomRegistry registry) {
         registries.add(registry);
+        return registry;
     }
 
     public static CustomRegistry getRegistry(ResourceLocation registryId) {

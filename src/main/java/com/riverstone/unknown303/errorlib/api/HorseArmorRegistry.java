@@ -17,12 +17,27 @@ public class HorseArmorRegistry implements CustomRegistries.CustomRegistry {
         HORSE_ARMOR_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, modId);
     }
 
-    public RegistryObject<Item> registerHorseArmor(ArmorMaterial material,
+    public RegistryObject<Item> registerHorseArmor(CustomArmorMaterial material,
                                                        Item.Properties properties) {
         int protection;
         if (material.getDefenseForType(ArmorItem.Type.CHESTPLATE) +
+                material.getDefenseForType(ArmorItem.Type.BOOTS) == 11) {
+            protection = material.getDefenseForType(ArmorItem.Type.CHESTPLATE) +
+                    material.getDefenseForType(ArmorItem.Type.BOOTS) + 2;
+        } else {
+            protection = material.getDefenseForType(ArmorItem.Type.CHESTPLATE) +
+                    material.getDefenseForType(ArmorItem.Type.BOOTS);
+        }
+        return HORSE_ARMOR_ITEMS.register(material.getNamePath() + "_horse_armor",
+                () -> new HorseArmorItem(protection, material.getName(), properties));
+    }
+
+    public RegistryObject<Item> registerVanillaHorseArmor(ArmorMaterial material,
+                                                   Item.Properties properties) {
+        int protection;
+        if (material.getDefenseForType(ArmorItem.Type.CHESTPLATE) +
                 material.getDefenseForType(ArmorItem.Type.BOOTS) == 11 &&
-            material != ArmorMaterials.DIAMOND) {
+                material == ArmorMaterials.NETHERITE) {
             protection = material.getDefenseForType(ArmorItem.Type.CHESTPLATE) +
                     material.getDefenseForType(ArmorItem.Type.BOOTS) + 2;
         } else {
