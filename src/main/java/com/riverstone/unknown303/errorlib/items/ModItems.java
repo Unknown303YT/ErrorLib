@@ -20,9 +20,6 @@ public class ModItems {
 //            () -> new Item(new Item.Properties().rarity(Rarity.UNCOMMON)
 //                    .stacksTo(1).fireResistant()));
 
-//    TrimPattern;
-//    TrimPatterns
-
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

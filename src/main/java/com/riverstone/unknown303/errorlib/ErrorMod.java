@@ -2,6 +2,8 @@ package com.riverstone.unknown303.errorlib;
 
 import com.mojang.logging.LogUtils;
 import com.riverstone.unknown303.errorlib.api.CustomRegistries;
+import com.riverstone.unknown303.errorlib.api.event.CreativeTabsReadyEvent;
+import com.riverstone.unknown303.errorlib.api.event.RegisterReadyEvent;
 import com.riverstone.unknown303.errorlib.blocks.ModBlocks;
 import com.riverstone.unknown303.errorlib.items.ModCreativeTabs;
 import com.riverstone.unknown303.errorlib.items.ModItems;
@@ -14,6 +16,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
@@ -26,12 +29,12 @@ public class ErrorMod {
     public ErrorMod(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
 
-        CustomRegistries.register(modEventBus);
-
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
 
         ModCreativeTabs.register(modEventBus);
+
+        CustomRegistries.register();
 
         modEventBus.addListener(this::commonSetup);
 
@@ -39,8 +42,14 @@ public class ErrorMod {
         modEventBus.addListener(this::addCreative);
     }
 
+//    @SubscribeEvent
+//    public void onReady(RegisterReadyEvent event) {
+//        CustomRegistries.register();
+//        MinecraftForge.EVENT_BUS.post(new CreativeTabsReadyEvent());
+//    }
+
     private void commonSetup(final FMLCommonSetupEvent event) {
-        // Some common setup code
+        // Common Setup
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
@@ -51,6 +60,14 @@ public class ErrorMod {
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
+    }
+
+    private void loadComplete(final FMLLoadCompleteEvent event) {
+        for (CustomRegistries.CustomRegistry registry : CustomRegistries.getRegistries()) {
+            if (!CustomRegistries.isRegistryRegistered(registry)) {
+                LOGGER.warn("Registry " + registry.getId() + "is not registered!");
+            }
+        }
     }
 
     // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
