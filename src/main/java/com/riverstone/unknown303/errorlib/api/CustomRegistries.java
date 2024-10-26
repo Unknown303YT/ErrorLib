@@ -1,6 +1,7 @@
 package com.riverstone.unknown303.errorlib.api;
 
 import com.riverstone.unknown303.errorlib.ErrorMod;
+import it.unimi.dsi.fastutil.Hash;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.eventbus.api.IEventBus;
 import org.stringtemplate.v4.ST;
@@ -11,11 +12,13 @@ import java.util.List;
 
 public class CustomRegistries {
     static HashMap<String, CustomRegistry> registries = new HashMap<>();
-    static HashMap<CustomRegistry, Boolean> isRegistered = new HashMap<>();
+    static HashMap<String, Boolean> isEnabled = new HashMap<>();
+    static HashMap<String, Boolean> isRegistered = new HashMap<>();
 
     public static CustomRegistry createRegistry(CustomRegistry registry) {
         registries.put(registry.getId().toString(), registry);
-        isRegistered.put(registry, false);
+        isEnabled.put(registry.getId().toString(), false);
+        isRegistered.put(registry.getId().toString(), false);
         return registry;
     }
 
@@ -25,10 +28,15 @@ public class CustomRegistries {
             return;
         }
         registries.put(registry.getId().toString(), registry);
+        isEnabled.put(registry.getId().toString(), true);
     }
 
     public static List<CustomRegistry> getRegistries() {
         return registries.values().stream().toList();
+    }
+
+    public static HashMap<String, Boolean> getEnabledRegistries() {
+        return isEnabled;
     }
 
     public static CustomRegistry getRegistry(ResourceLocation registryId) {
@@ -49,15 +57,16 @@ public class CustomRegistries {
     }
 
     public static void register() {
-        for (CustomRegistry registry : getRegistries()) {
+        for (String s : getEnabledRegistries().keySet()) {
+            CustomRegistry registry = getRegistry(s);
             registry.register();
-            isRegistered.put(registry, true);
+            isRegistered.put(registry.getId().toString(), true);
             ErrorMod.LOGGER.debug("REGISTRY " + registry.getId().toString() + " SUCCESSFULLY REGISTERED.");
         }
     }
 
     public static boolean isRegistryRegistered(CustomRegistry registry) {
-        return isRegistered.get(registry);
+        return isRegistered.get(registry.getId().toString());
     }
 
     public interface CustomRegistry {

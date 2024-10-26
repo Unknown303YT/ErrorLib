@@ -17,7 +17,7 @@ license="Error License of Fair Play"
 # The modid of the mod
 modId="errorlib" #mandatory
 # The version number of the mod
-version="0.2.7-1.20.1" #mandatory
+version="0.3.2-1.20.1" #mandatory
 # A display name for the mod
 displayName="Error: Core" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification https://docs.minecraftforge.net/en/latest/misc/updatechecker/
@@ -39,7 +39,7 @@ authors="Unknown_303" #optional
 #displayTest="MATCH_VERSION" # MATCH_VERSION is the default if nothing is specified (#optional)
 
 # The description text for the mod (multi line!) (#mandatory)
-description='''Core and Library Mod for mods by Unknown_303 and any associates.'''
+description='''Core and API Mod for mods by Unknown_303 and any associates.'''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.errorlib]] #optional
     # the modid of the dependency

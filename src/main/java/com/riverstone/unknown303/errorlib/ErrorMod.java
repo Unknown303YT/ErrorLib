@@ -2,8 +2,6 @@ package com.riverstone.unknown303.errorlib;
 
 import com.mojang.logging.LogUtils;
 import com.riverstone.unknown303.errorlib.api.CustomRegistries;
-import com.riverstone.unknown303.errorlib.api.event.CreativeTabsReadyEvent;
-import com.riverstone.unknown303.errorlib.api.event.RegisterReadyEvent;
 import com.riverstone.unknown303.errorlib.blocks.ModBlocks;
 import com.riverstone.unknown303.errorlib.items.ModCreativeTabs;
 import com.riverstone.unknown303.errorlib.items.ModItems;
@@ -20,6 +18,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
+import java.util.HashMap;
+
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(ErrorMod.MOD_ID)
 public class ErrorMod {
@@ -34,19 +34,11 @@ public class ErrorMod {
 
         ModCreativeTabs.register(modEventBus);
 
-        CustomRegistries.register();
-
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
     }
-
-//    @SubscribeEvent
-//    public void onReady(RegisterReadyEvent event) {
-//        CustomRegistries.register();
-//        MinecraftForge.EVENT_BUS.post(new CreativeTabsReadyEvent());
-//    }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Common Setup
@@ -63,9 +55,18 @@ public class ErrorMod {
     }
 
     private void loadComplete(final FMLLoadCompleteEvent event) {
+        HashMap<String, Boolean> map = CustomRegistries.getEnabledRegistries();
+        for (String id : map.keySet()) {
+            boolean value = map.get(id);
+            CustomRegistries.CustomRegistry registry = CustomRegistries.getRegistry(id);
+            if (!value) {
+                LOGGER.warn("Registry " + registry.getId().toString() + " is not enabled and will not be registered.");
+            }
+        }
+        CustomRegistries.register();
         for (CustomRegistries.CustomRegistry registry : CustomRegistries.getRegistries()) {
             if (!CustomRegistries.isRegistryRegistered(registry)) {
-                LOGGER.warn("Registry " + registry.getId() + "is not registered!");
+                LOGGER.warn("Registry " + registry.getId() + " was not registered!");
             }
         }
     }

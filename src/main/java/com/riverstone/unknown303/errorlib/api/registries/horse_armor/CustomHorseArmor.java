@@ -5,7 +5,7 @@ import net.minecraft.world.item.HorseArmorItem;
 
 public class CustomHorseArmor extends HorseArmorItem {
     public CustomHorseArmor(int protection, String namespace, String identifier, Properties properties) {
-        this(protection, new ResourceLocation(namespace, identifier), properties);
+        this(protection, new ResourceLocation(namespace, "textures/entity/horse/armor/horse_armor_" + identifier + ".png"), properties);
     }
 
     public CustomHorseArmor(int protection, ResourceLocation resourceLocation, Properties properties) {

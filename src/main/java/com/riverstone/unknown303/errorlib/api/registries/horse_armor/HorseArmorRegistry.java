@@ -53,6 +53,11 @@ public class HorseArmorRegistry implements CustomRegistries.CustomRegistry {
                 () -> new CustomHorseArmor(protection, this.modId, material.getName(), properties.stacksTo(1)));
     }
 
+    public RegistryObject<Item> registerHorseArmor(String armorType, int protection, Item.Properties properties) {
+        return HORSE_ARMOR_ITEMS.register(armorType + "_horse_armor",
+                () -> new CustomHorseArmor(protection, this.modId, armorType, properties.stacksTo(1)));
+    }
+
     @Override
     public ResourceLocation getId() {
         return registryId;
