@@ -1,7 +1,5 @@
-package com.riverstone.unknown303.errorlib.api.registries.trim.pattern;
+package com.riverstone.unknown303.errorlib.api.helpers.trim.pattern;
 
-import com.riverstone.unknown303.errorlib.api.general.CustomRegistry;
-import com.riverstone.unknown303.errorlib.api.general.ModToken;
 import net.minecraft.Util;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -17,23 +15,21 @@ import net.minecraftforge.registries.RegistryObject;
 
 import java.util.LinkedHashMap;
 
-public class TrimPatternRegistry implements CustomRegistry {
-    ModToken token;
-    final DeferredRegister<Item> TRIM_PATTERN_ITEMS;
-    ResourceLocation registryId;
+public class TrimPatternHelper {
+    String modId;
+    DeferredRegister<Item> register;
     private static final LinkedHashMap<ResourceKey<TrimPattern>, Item> trimPatterns = new LinkedHashMap<>();
 
-    public TrimPatternRegistry(ModToken token, String registryPath) {
-        this.token = token;
-        this.registryId = new ResourceLocation(token.getModId(), registryPath);
-        TRIM_PATTERN_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, token.getModId());
+    public TrimPatternHelper(String modId, DeferredRegister<Item> register) {
+        this.modId = modId;
+        this.register = register;
     }
 
     public RegistryObject<Item> registerTrimPattern(String id) {
-        ResourceLocation resourceLocation = new ResourceLocation(this.token.getModId(), id);
+        ResourceLocation resourceLocation = new ResourceLocation(this.modId, id);
         ResourceKey<TrimPattern> trimPattern = ResourceKey.create(Registries.TRIM_PATTERN,
                 resourceLocation);
-        RegistryObject<Item> toReturn = TRIM_PATTERN_ITEMS.register(id + "_armor_trim_smithing_template",
+        RegistryObject<Item> toReturn = this.register.register(id + "_armor_trim_smithing_template",
                 () -> SmithingTemplateItem.createArmorTrimTemplate(trimPattern));
         trimPatterns.put(trimPattern, toReturn.get());
         return toReturn;
@@ -50,15 +46,5 @@ public class TrimPatternRegistry implements CustomRegistry {
         TrimPattern trimPattern = new TrimPattern(key.location(), ForgeRegistries.ITEMS.getHolder(item).get(),
                 Component.translatable(Util.makeDescriptionId("trim_pattern", key.location())));
         context.register(key, trimPattern);
-    }
-
-    @Override
-    public ResourceLocation getId() {
-        return registryId;
-    }
-
-    @Override
-    public void register() {
-        TRIM_PATTERN_ITEMS.register(token.getEventBus());
     }
 }

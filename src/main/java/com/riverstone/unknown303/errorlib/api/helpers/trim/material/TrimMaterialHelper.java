@@ -1,7 +1,5 @@
-package com.riverstone.unknown303.errorlib.api.registries.trim.material;
+package com.riverstone.unknown303.errorlib.api.helpers.trim.material;
 
-import com.riverstone.unknown303.errorlib.api.general.CustomRegistry;
-import com.riverstone.unknown303.errorlib.api.general.ModToken;
 import net.minecraft.Util;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -16,33 +14,23 @@ import net.minecraft.world.item.armortrim.TrimMaterial;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class TrimMaterialRegistry implements CustomRegistry {
-    ModToken token;
-    ResourceLocation registryId;
+public class TrimMaterialHelper {
+    String modId;
     private static final LinkedHashMap<ResourceKey<TrimMaterial>, Item> trimMaterialItems = new LinkedHashMap<>();
     private static final LinkedHashMap<ResourceKey<TrimMaterial>, TextColor> trimMaterialTextColors = new LinkedHashMap<>();
     private static final LinkedHashMap<ResourceKey<TrimMaterial>, TrimMaterialColor> trimMaterialColors = new LinkedHashMap<>();
 
-    public TrimMaterialRegistry(ModToken token, String registryPath) {
-        this.token = token;
-        this.registryId = new ResourceLocation(token.getModId(), registryPath);
+    public TrimMaterialHelper(String modId) {
+        this.modId = modId;
     }
 
     public void registerTrimMaterial(String name, Item item, TextColor textColor, TrimMaterialColor color) {
         ResourceKey<TrimMaterial> trimKey = ResourceKey.create(Registries.TRIM_MATERIAL,
-                new ResourceLocation(token.getModId(), name));
+                new ResourceLocation(modId, name));
         trimMaterialItems.put(trimKey, item);
         trimMaterialTextColors.put(trimKey, textColor);
         trimMaterialColors.put(trimKey, color);
     }
-
-    @Override
-    public ResourceLocation getId() {
-        return registryId;
-    }
-
-    @Override
-    public void register() {}
 
     public void bootstrap(BootstapContext<TrimMaterial> context) {
         for (ResourceKey<TrimMaterial> trimMaterial : trimMaterialItems.keySet()) {

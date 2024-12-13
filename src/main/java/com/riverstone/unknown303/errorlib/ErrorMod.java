@@ -30,7 +30,6 @@ public class ErrorMod {
         ModBlocks.register(modEventBus);
 
         ModCreativeTabs.register(modEventBus);
-        ErrorAPI.register();
 
         modEventBus.addListener(this::commonSetup);
 

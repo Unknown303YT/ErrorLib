@@ -1,27 +1,19 @@
-package com.riverstone.unknown303.errorlib.api.registries.horse_armor;
+package com.riverstone.unknown303.errorlib.api.helpers.horse_armor;
 
-import com.riverstone.unknown303.errorlib.api.general.CustomRegistry;
-import com.riverstone.unknown303.errorlib.api.general.ModToken;
 import com.riverstone.unknown303.errorlib.api.misc.CustomArmorMaterial;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class HorseArmorRegistry implements CustomRegistry {
-    ModToken token;
-    final DeferredRegister<Item> HORSE_ARMOR_ITEMS;
-    ResourceLocation registryId;
+public class HorseArmorHelper {
+    String modId;
+    DeferredRegister<Item> register;
 
-    public HorseArmorRegistry(ModToken token, String registryPath) {
-        this.token = token;
-        this.registryId = new ResourceLocation(token.getModId(), registryPath);
-        HORSE_ARMOR_ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, token.getModId());
+    public HorseArmorHelper(String modId, DeferredRegister<Item> register) {
+        this.modId = modId;
+        this.register = register;
     }
-
     public RegistryObject<Item> registerHorseArmor(CustomArmorMaterial material,
                                                    Item.Properties properties) {
         int protection;
@@ -33,8 +25,8 @@ public class HorseArmorRegistry implements CustomRegistry {
             protection = material.getDefenseForType(ArmorItem.Type.CHESTPLATE) +
                     material.getDefenseForType(ArmorItem.Type.BOOTS);
         }
-        return HORSE_ARMOR_ITEMS.register(material.getPath() + "_horse_armor",
-                () -> new CustomHorseArmor(protection, this.token.getModId(), material.getPath(), properties.stacksTo(1)));
+        return this.register.register(material.getPath() + "_horse_armor",
+                () -> new HorseArmorItem(protection, horseArmorTexture(material.getPath()), properties.stacksTo(1)));
     }
 
     public RegistryObject<Item> registerVanillaHorseArmor(ArmorMaterial material,
@@ -49,22 +41,16 @@ public class HorseArmorRegistry implements CustomRegistry {
             protection = material.getDefenseForType(ArmorItem.Type.CHESTPLATE) +
                     material.getDefenseForType(ArmorItem.Type.BOOTS);
         }
-        return HORSE_ARMOR_ITEMS.register(material.getName() + "_horse_armor",
-                () -> new CustomHorseArmor(protection, this.token.getModId(), material.getName(), properties.stacksTo(1)));
+        return this.register.register(material.getName() + "_horse_armor",
+                () -> new HorseArmorItem(protection, material.getName(), properties.stacksTo(1)));
     }
 
     public RegistryObject<Item> registerHorseArmor(String armorType, int protection, Item.Properties properties) {
-        return HORSE_ARMOR_ITEMS.register(armorType + "_horse_armor",
-                () -> new CustomHorseArmor(protection, this.token.getModId(), armorType, properties.stacksTo(1)));
+        return this.register.register(armorType + "_horse_armor",
+                () -> new HorseArmorItem(protection, horseArmorTexture(armorType), properties.stacksTo(1)));
     }
 
-    @Override
-    public ResourceLocation getId() {
-        return registryId;
-    }
-
-    @Override
-    public void register() {
-        HORSE_ARMOR_ITEMS.register(this.token.getEventBus());
+    private ResourceLocation horseArmorTexture(String armorId) {
+        return new ResourceLocation(this.modId, "textures/entity/horse/armor/horse_armor_" + armorId + ".png");
     }
 }
