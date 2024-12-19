@@ -7,10 +7,11 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Tier;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModAxeItem extends AxeItem {
-    boolean hasInstance;
-    MobEffectInstance instance = null;
+    List<MobEffectInstance> instances;
 
     public ModAxeItem(Tier pTier, int pAttackDamageModifier,
                         float pAttackSpeedModifier, Properties pProperties) {
@@ -18,20 +19,19 @@ public class ModAxeItem extends AxeItem {
     }
 
     public ModAxeItem(Tier pTier, int pAttackDamageModifier,
-                        float pAttackSpeedModifier, Properties pProperties, @Nullable MobEffectInstance instance) {
+                        float pAttackSpeedModifier, Properties pProperties, @Nullable List<MobEffectInstance> instances) {
         super(pTier, pAttackDamageModifier, pAttackSpeedModifier, pProperties.stacksTo(1));
-        if (instance == null) {
-            hasInstance = false;
-            return;
+        if (instances != null) {
+            this.instances = instances;
+        } else {
+            this.instances = new ArrayList<>();
         }
-        hasInstance = true;
-        this.instance = instance;
     }
 
     @Override
     public boolean hurtEnemy(ItemStack pStack, LivingEntity pTarget, LivingEntity pAttacker) {
-        if (hasInstance) {
-            pTarget.addEffect(this.instance, pAttacker);
+        for (MobEffectInstance instance : this.instances) {
+            pTarget.addEffect(instance, pAttacker);
         }
         return super.hurtEnemy(pStack, pTarget, pAttacker);
     }
