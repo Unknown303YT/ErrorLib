@@ -1,18 +1,16 @@
 package com.riverstone.unknown303.errorlib.api.helpers.horse_armor;
 
+import com.riverstone.unknown303.errorlib.api.general.ModInfo;
+import com.riverstone.unknown303.errorlib.api.helpers.ErrorLibHelper;
 import com.riverstone.unknown303.errorlib.api.misc.CustomArmorMaterial;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
-public class HorseArmorHelper {
-    String modId;
-    DeferredRegister<Item> register;
-
-    public HorseArmorHelper(String modId, DeferredRegister<Item> register) {
-        this.modId = modId;
-        this.register = register;
+public class HorseArmorHelper extends ErrorLibHelper {
+    public HorseArmorHelper(ModInfo modInfo) {
+        super(modInfo);
     }
     public RegistryObject<Item> registerHorseArmor(CustomArmorMaterial material,
                                                    Item.Properties properties) {
@@ -25,7 +23,7 @@ public class HorseArmorHelper {
             protection = material.getDefenseForType(ArmorItem.Type.CHESTPLATE) +
                     material.getDefenseForType(ArmorItem.Type.BOOTS);
         }
-        return this.register.register(material.getPath() + "_horse_armor",
+        return this.getRegister().register(material.getPath() + "_horse_armor",
                 () -> new HorseArmorItem(protection, createHorseArmorTexture(material.getPath()), properties.stacksTo(1)));
     }
 
@@ -49,11 +47,11 @@ public class HorseArmorHelper {
     }
 
     public RegistryObject<Item> registerHorseArmor(String armorType, int protection, Item.Properties properties) {
-        return this.register.register(armorType + "_horse_armor",
+        return this.getRegister().register(armorType + "_horse_armor",
                 () -> new HorseArmorItem(protection, createHorseArmorTexture(armorType), properties.stacksTo(1)));
     }
 
     private ResourceLocation createHorseArmorTexture(String armorId) {
-        return new ResourceLocation(this.modId, "textures/entity/horse/armor/horse_armor_" + armorId + ".png");
+        return new ResourceLocation(this.getModId(), "textures/entity/horse/armor/horse_armor_" + armorId + ".png");
     }
 }

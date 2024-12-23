@@ -5,16 +5,19 @@ import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.DatapackBuiltinEntriesProvider;
 
+import java.util.Objects;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
 
 public abstract class ArmorTrimDatagen extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder();
-    private static String modId;
 
     protected ArmorTrimDatagen(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, BUILDER, Set.of(modId));
+        super(output, registries, BUILDER, Set.of(Objects.requireNonNull(getModId())));
     }
 
-    protected abstract String setModId();
+    // MUST BE OVERRIDDEN
+    protected static String getModId() {
+        return null;
+    }
 }

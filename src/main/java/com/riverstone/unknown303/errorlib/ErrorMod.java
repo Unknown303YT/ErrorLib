@@ -1,7 +1,6 @@
 package com.riverstone.unknown303.errorlib;
 
 import com.mojang.logging.LogUtils;
-import com.riverstone.unknown303.errorlib.api.general.ErrorAPI;
 import com.riverstone.unknown303.errorlib.blocks.ModBlocks;
 import com.riverstone.unknown303.errorlib.items.ModCreativeTabs;
 import com.riverstone.unknown303.errorlib.items.ModItems;

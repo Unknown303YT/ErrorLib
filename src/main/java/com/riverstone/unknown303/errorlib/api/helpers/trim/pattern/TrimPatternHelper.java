@@ -1,5 +1,7 @@
 package com.riverstone.unknown303.errorlib.api.helpers.trim.pattern;
 
+import com.riverstone.unknown303.errorlib.api.general.ModInfo;
+import com.riverstone.unknown303.errorlib.api.helpers.ErrorLibHelper;
 import net.minecraft.Util;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -12,24 +14,22 @@ import net.minecraft.world.item.armortrim.TrimPattern;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.slf4j.Logger;
 
 import java.util.LinkedHashMap;
 
-public class TrimPatternHelper {
-    String modId;
-    DeferredRegister<Item> register;
+public class TrimPatternHelper extends ErrorLibHelper {
     private static final LinkedHashMap<ResourceKey<TrimPattern>, Item> trimPatterns = new LinkedHashMap<>();
 
-    public TrimPatternHelper(String modId, DeferredRegister<Item> register) {
-        this.modId = modId;
-        this.register = register;
+    public TrimPatternHelper(ModInfo modInfo) {
+        super(modInfo);
     }
 
     public RegistryObject<Item> registerTrimPattern(String id) {
-        ResourceLocation resourceLocation = new ResourceLocation(this.modId, id);
+        ResourceLocation resourceLocation = new ResourceLocation(this.getModId(), id);
         ResourceKey<TrimPattern> trimPattern = ResourceKey.create(Registries.TRIM_PATTERN,
                 resourceLocation);
-        RegistryObject<Item> toReturn = this.register.register(id + "_armor_trim_smithing_template",
+        RegistryObject<Item> toReturn = this.getRegister().register(id + "_armor_trim_smithing_template",
                 () -> SmithingTemplateItem.createArmorTrimTemplate(trimPattern));
         trimPatterns.put(trimPattern, toReturn.get());
         return toReturn;

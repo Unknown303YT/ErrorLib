@@ -1,5 +1,7 @@
 package com.riverstone.unknown303.errorlib.api.helpers.trim.material;
 
+import com.riverstone.unknown303.errorlib.api.general.ModInfo;
+import com.riverstone.unknown303.errorlib.api.helpers.ErrorLibHelper;
 import net.minecraft.Util;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstapContext;
@@ -14,19 +16,18 @@ import net.minecraft.world.item.armortrim.TrimMaterial;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class TrimMaterialHelper {
-    String modId;
+public class TrimMaterialHelper extends ErrorLibHelper {
     private static final LinkedHashMap<ResourceKey<TrimMaterial>, Item> trimMaterialItems = new LinkedHashMap<>();
     private static final LinkedHashMap<ResourceKey<TrimMaterial>, TextColor> trimMaterialTextColors = new LinkedHashMap<>();
     private static final LinkedHashMap<ResourceKey<TrimMaterial>, TrimMaterialColor> trimMaterialColors = new LinkedHashMap<>();
 
-    public TrimMaterialHelper(String modId) {
-        this.modId = modId;
+    public TrimMaterialHelper(ModInfo modInfo) {
+        super(modInfo);
     }
 
     public void registerTrimMaterial(String name, Item item, TextColor textColor, TrimMaterialColor color) {
         ResourceKey<TrimMaterial> trimKey = ResourceKey.create(Registries.TRIM_MATERIAL,
-                new ResourceLocation(modId, name));
+                new ResourceLocation(this.getModId(), name));
         trimMaterialItems.put(trimKey, item);
         trimMaterialTextColors.put(trimKey, textColor);
         trimMaterialColors.put(trimKey, color);
