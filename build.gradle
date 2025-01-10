@@ -40,7 +40,7 @@ minecraft {
     // enableIdeaPrepareRuns = true
 
     // This property allows configuring Gradle's ProcessResources task(s) to run on IDE output locations before launching the game.
-    // It is REQUIRED to be set to true for this template to function.
+    // It is REQUIRED to be set to true for this pattern to function.
     // See https://docs.gradle.org/current/dsl/org.gradle.language.jvm.tasks.ProcessResources.html
     copyIdeResources = true
 
@@ -68,7 +68,7 @@ minecraft {
             // The markers can be added/remove as needed separated by commas.
             // "SCAN": For mods scan.
             // "REGISTRIES": For firing of registry events.
-            // "REGISTRYDUMP": For getting the contents of all registries.
+            // "REGISTRYDUMP": For getting the contents of all helpers.
             property 'forge.logging.markers', 'REGISTRIES'
 
             // Recommended logging level for the console
@@ -202,7 +202,7 @@ tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
 
-tasks.register('devJar', org.gradle.jvm.tasks.Jar) {
+tasks.register('devJar', Jar) {
     archiveClassifier.set("api")
     from sourceSets.main.output
 }
