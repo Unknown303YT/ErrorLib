@@ -8,6 +8,7 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.Tiers;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.common.TierSortingRegistry;
 import org.jetbrains.annotations.NotNull;
@@ -61,14 +62,8 @@ public class TierInfo {
         return this;
     }
 
-    public TierInfo repairIngredient(Ingredient repairIngredient) {
-        if (repairIngredient.isEmpty()) {
-            IllegalStateException exception =
-                    new IllegalStateException("Error: Repair Ingredient must be valid");
-            this.logger.error("Error: Repair Ingredient must be valid", exception);
-        }
-
-        this.repairIngredient = repairIngredient;
+    public TierInfo repairIngredient(ItemLike repairIngredient) {
+        this.repairIngredient = Ingredient.of(repairIngredient);
         return this;
     }
 

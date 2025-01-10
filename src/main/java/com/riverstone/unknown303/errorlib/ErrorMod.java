@@ -16,6 +16,9 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
+import java.util.Random;
+import java.util.function.Supplier;
+
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(ErrorMod.MOD_ID)
 public class ErrorMod {
@@ -24,6 +27,8 @@ public class ErrorMod {
 
     public ErrorMod(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
+
+        Random random = new Random();
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);
@@ -35,6 +40,7 @@ public class ErrorMod {
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
     }
+
 
     private void commonSetup(final FMLCommonSetupEvent event) {
         // Common Setup

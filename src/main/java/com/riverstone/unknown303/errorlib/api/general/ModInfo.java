@@ -6,13 +6,25 @@ import org.slf4j.Logger;
 
 public class ModInfo {
     private final String modId;
-    private final Logger logger;
-    private final DeferredRegister<Item> register;
+    private boolean hasLogger;
+    private Logger logger;
+    private boolean hasItemRegister;
+    private DeferredRegister<Item> register;
 
-    public ModInfo(String modId, Logger logger, DeferredRegister<Item> register) {
+    public ModInfo(String modId) {
         this.modId = modId;
+        this.hasLogger = false;
+        this.hasItemRegister = false;
+    }
+
+    public ModInfo logger(Logger logger) {
         this.logger = logger;
-        this.register = register;
+        return this;
+    }
+
+    public ModInfo itemRegister(DeferredRegister<Item> itemRegister) {
+        this.register = itemRegister;
+        return this;
     }
 
     public String getModId() {

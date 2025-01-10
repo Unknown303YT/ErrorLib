@@ -12,14 +12,14 @@ public class ToolTierHelper extends ErrorLibHelper {
         super(modInfo);
     }
 
-    public Tier createToolTier(String tierId, TierInfo tierInfo) {
+    public Tier createToolTier(String tierId, TierInfo info) {
         return TierSortingRegistry.registerTier(
-                new ForgeTier(tierInfo.getLevel(), tierInfo.getDurability(),
-                        tierInfo.getAttackSpeed(), tierInfo.getTierAttackDamage(),
-                        tierInfo.getEnchantability(), tierInfo.getMiningTag(),
-                        tierInfo.getRepairIngredient()),
+                new ForgeTier(info.getLevel(), info.getDurability(),
+                        info.getAttackSpeed(), info.getTierAttackDamage(),
+                        info.getEnchantability(), info.getMiningTag(),
+                        info.getRepairIngredient()),
                 new ResourceLocation(this.getModId(), tierId),
-                tierInfo.getLowerRank(), tierInfo.getHigherRank());
+                info.getLowerRank(), info.getHigherRank());
     }
 
     public TierInfo createTierInfo(int durability, float attackSpeed,

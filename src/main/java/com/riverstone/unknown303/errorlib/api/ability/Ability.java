@@ -1,6 +1,7 @@
 package com.riverstone.unknown303.errorlib.api.ability;
 
-import com.riverstone.unknown303.errorlib.api.misc.MiscUtil;
+import com.riverstone.unknown303.errorlib.api.general.ModInfo;
+import com.riverstone.unknown303.errorlib.api.helpers.component.ComponentHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 
@@ -11,8 +12,8 @@ public class Ability {
     Component translation;
 
     public Ability() {
-        this.name = Objects.requireNonNull(ModRegistries.ABILITIES.getKey(this)).getPath();
-        this.translation = createAbilityComponent(ModRegistries.ABILITIES.getKey(this));
+        this.name = Objects.requireNonNull(ErrorRegistries.ABILITIES.getKey(this)).getPath();
+        this.translation = createAbilityComponent(Objects.requireNonNull(ErrorRegistries.ABILITIES.getKey(this)));
     }
 
     public String getDisplayName() {
@@ -20,7 +21,8 @@ public class Ability {
     }
 
     public static Component createAbilityComponent(ResourceLocation location) {
-        return MiscUtil.createTranslatableComponent("ability", location);
+        return new ComponentHelper(new ModInfo(location.getNamespace()))
+                .createTranslatableComponent("ability", location.getPath());
     }
 
     public static enum AbilityType {
