@@ -20,7 +20,7 @@ public class Ability {
         return this.translation.getString();
     }
 
-    public static Component createAbilityComponent(ResourceLocation location) {
+    private Component createAbilityComponent(ResourceLocation location) {
         return new ComponentHelper(new ModInfo(location.getNamespace()))
                 .createTranslatableComponent("ability", location.getPath());
     }
@@ -32,12 +32,10 @@ public class Ability {
         CONSTANT;
     }
 
-    public static enum AbilityContext {
+    public enum AbilityContext {
         SUPERPOWER,
-        SUIT,
-        COMBAT,
-        MAIN_HAND,
-        OFF_HAND;
+        ARMOR,
+        IN_HAND;
 
         public static AbilityContext fromString(String name) {
             for (AbilityContext context : AbilityContext.values()) {
