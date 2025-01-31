@@ -2,7 +2,6 @@ package com.riverstone.unknown303.errorlib.api.helpers.component;
 
 import com.riverstone.unknown303.errorlib.api.general.ModInfo;
 import com.riverstone.unknown303.errorlib.api.helpers.ErrorLibHelper;
-import net.minecraft.Util;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
@@ -14,9 +13,12 @@ public class ComponentHelper extends ErrorLibHelper {
         super(modInfo);
     }
 
-    public Component createTranslatableComponent(String type, String id) {
-        return Component.translatable(Util.makeDescriptionId(type,
-                new ResourceLocation(this.getModId(), id)));
+    public Component createTranslation(String type, String id) {
+        return Component.translatable(new ResourceLocation(this.getModId(), id).toLanguageKey(type));
+    }
+
+    public Component createTranslationWithKey(String type, String id, String key) {
+        return Component.translatable(new ResourceLocation(this.getModId(), id).toLanguageKey(type, key));
     }
 
     public Component combineComponents(MutableComponent base, MutableComponent addition) {

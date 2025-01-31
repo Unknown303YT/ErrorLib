@@ -1,6 +1,7 @@
 package com.riverstone.unknown303.errorlib.api.helpers.registry;
 
 import com.riverstone.unknown303.errorlib.ErrorMod;
+import com.riverstone.unknown303.errorlib.api.ability.Ability;
 import com.riverstone.unknown303.errorlib.api.general.ModInfo;
 import com.riverstone.unknown303.errorlib.api.helpers.ErrorLibHelper;
 import com.riverstone.unknown303.errorlib.items.ModItems;
@@ -24,26 +25,26 @@ public class RegistryHelper extends ErrorLibHelper {
     /**
      * Should be used if you want to make mods be able to register variables and later access those variables.
      * @param registryId The string id of your custom registry, not including the namespace.
-     * @param sup Used to set the class the {@link IForgeRegistry<T> IForgeRegistry} handles.<br> Intended Use (replace Ability with your {@link IForgeRegistry IForgeRegistry} type: <pre><code>createRegistry("ability", Ability::new)</code></pre>
+     * @param type Used to set the class the {@link IForgeRegistry<T> IForgeRegistry} handles.<br> Intended Use (replace Ability with your {@link IForgeRegistry IForgeRegistry} type: <pre><code>createRegistry("ability", Ability.class)</code></pre>
      */
-    public <T> IForgeRegistry<T> createRegistry(String registryId, Supplier<T> sup) {
-        ResourceKey<Registry<T>> registryKey = key(registryId, sup);
+    public <T> IForgeRegistry<T> createRegistry(String registryId, Class<T> type) {
+        ResourceKey<Registry<T>> registryKey = key(registryId, type);
         DeferredRegister<T> REGISTRY = DeferredRegister.create(registryKey, this.getModId());
         return REGISTRY.makeRegistry(RegistryBuilder::new).get();
     }
 
     /**
-     * Used in {@link #createRegistry(String, Supplier) createRegistry} make the ResourceKey for the
+     * Used in {@link #createRegistry(String, Supplier) createRegistry} to make the ResourceKey for the {@link IForgeRegistry<T> IForgeRegistry}.
      */
-    private <T> ResourceKey<Registry<T>> key(String registryId, Supplier<T> sup) {
+    private <T> ResourceKey<Registry<T>> key(String registryId, Class<T> type) {
         return ResourceKey.createRegistryKey(new ResourceLocation(this.getModId(), registryId));
     }
 
-    public <T> List<T> getValidRegistrations(IForgeRegistry<T> reg, Supplier<T> sup) {
+    public <T> List<T> getValidRegistrations(IForgeRegistry<T> reg, Class<T> type) {
         return reg.getValues().stream().toList();
     }
 
-    public <T> T getRegistration(IForgeRegistry<T> reg, String registryId, Supplier<T> sup) {
+    public <T> T getRegistration(IForgeRegistry<T> reg, String registryId, Class<T> type) {
         return reg.getValue(new ResourceLocation(this.getModId(), registryId));
     }
 }

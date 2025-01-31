@@ -1,28 +1,37 @@
 package com.riverstone.unknown303.errorlib.api.ability;
 
-import com.riverstone.unknown303.errorlib.api.general.ModInfo;
+import com.riverstone.unknown303.errorlib.api.ability.origin.AbilityOrigin;
 import com.riverstone.unknown303.errorlib.api.helpers.component.ComponentHelper;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.Level;
 
-import java.util.Objects;
+public abstract class Ability {
+    private final AbilityOrigin origin;
+    private final ComponentHelper componentHelper;
 
-public class Ability {
-    String name;
-    Component translation;
-
-    public Ability() {
-        this.name = Objects.requireNonNull(ErrorRegistries.ABILITIES.getKey(this)).getPath();
-        this.translation = createAbilityComponent(Objects.requireNonNull(ErrorRegistries.ABILITIES.getKey(this)));
+    public Ability(AbilityOrigin origin, ComponentHelper componentHelper) {
+        this.origin = origin;
+        this.componentHelper = componentHelper;
     }
 
-    public String getDisplayName() {
-        return this.translation.getString();
+    public abstract void enable(Level level, Player owner);
+
+    public abstract void tick(Level level, Player owner);
+
+    public abstract void disable(Level level, Player owner);
+
+    public Component getAbilityName() {
+        return componentHelper.createTranslationWithKey("ability", getAbilityId().getPath(), "name");
     }
 
-    private Component createAbilityComponent(ResourceLocation location) {
-        return new ComponentHelper(new ModInfo(location.getNamespace()))
-                .createTranslatableComponent("ability", location.getPath());
+    public Component getAbilityDescription() {
+        return componentHelper.createTranslationWithKey("ability", getAbilityId().getPath(), "description");
+    }
+
+    public ResourceLocation getAbilityId() {
+        return ErrorRegistries.ABILITIES.getKey(this);
     }
 
     public static enum AbilityType {

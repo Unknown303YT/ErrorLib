@@ -5,5 +5,5 @@ import net.minecraftforge.registries.IForgeRegistry;
 
 public class ErrorRegistries {
     public static final IForgeRegistry<Ability> ABILITIES =
-            ModHelpers.REGISTRY_HELPER.createRegistry("ability", Ability::new);
+            ModHelpers.REGISTRY_HELPER.createRegistry("ability", Ability.class);
 }
