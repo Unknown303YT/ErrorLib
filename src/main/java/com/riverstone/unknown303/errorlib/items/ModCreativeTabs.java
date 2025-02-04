@@ -15,15 +15,14 @@ public class ModCreativeTabs {
     public static final DeferredRegister<CreativeModeTab> CREATIVE_TABS =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, ErrorMod.MOD_ID);
 
-//    public static final RegistryObject<CreativeModeTab> ERROR_TAB =
-//            CREATIVE_TABS.register("error_tab",
-//                    () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.CORRUPTED_HEART.get()))
-//                            .title(Component.translatable("creativetab.errorlib.error_tab"))
-//                            .displayItems((pParameters, pOutput) -> {
-//                                pOutput.accept(ModItems.CORRUPTED_HEART.get());
-//                                pOutput.accept(ModBlocks.COMBO_BLOCK.get());
-//                            })
-//                            .build());
+    public static final RegistryObject<CreativeModeTab> ERROR_TAB =
+            CREATIVE_TABS.register("error_tab",
+                    () -> CreativeModeTab.builder().icon(() -> new ItemStack(ModItems.DIAMOND_DAGGER.get()))
+                            .title(Component.translatable("creativetab.errorlib.error_tab"))
+                            .displayItems((pParameters, pOutput) -> {
+                                pOutput.accept(ModItems.DIAMOND_DAGGER.get());
+                            })
+                            .build());
 
     public static void register(IEventBus eventBus) {
         CREATIVE_TABS.register(eventBus);

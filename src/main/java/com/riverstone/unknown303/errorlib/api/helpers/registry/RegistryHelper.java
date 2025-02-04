@@ -34,7 +34,7 @@ public class RegistryHelper extends ErrorLibHelper {
     }
 
     /**
-     * Used in {@link #createRegistry(String, Supplier) createRegistry} to make the ResourceKey for the {@link IForgeRegistry<T> IForgeRegistry}.
+     * Used in {@link #createRegistry(String, Class<T>) createRegistry} to make the ResourceKey for the {@link IForgeRegistry<T> IForgeRegistry}.
      */
     private <T> ResourceKey<Registry<T>> key(String registryId, Class<T> type) {
         return ResourceKey.createRegistryKey(new ResourceLocation(this.getModId(), registryId));

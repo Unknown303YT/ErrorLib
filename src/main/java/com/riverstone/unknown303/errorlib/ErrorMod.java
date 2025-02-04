@@ -4,6 +4,11 @@ import com.mojang.logging.LogUtils;
 import com.riverstone.unknown303.errorlib.blocks.ModBlocks;
 import com.riverstone.unknown303.errorlib.items.ModCreativeTabs;
 import com.riverstone.unknown303.errorlib.items.ModItems;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.SwordItem;
+import net.minecraft.world.item.enchantment.Enchantment;
+import net.minecraft.world.item.enchantment.EnchantmentCategory;
+import net.minecraft.world.item.enchantment.Enchantments;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -16,9 +21,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-import java.util.Random;
-import java.util.function.Supplier;
-
 // The value here should match an entry in the META-INF/mods.toml file
 @Mod(ErrorMod.MOD_ID)
 public class ErrorMod {
@@ -27,8 +29,6 @@ public class ErrorMod {
 
     public ErrorMod(FMLJavaModLoadingContext context) {
         IEventBus modEventBus = context.getModEventBus();
-
-        Random random = new Random();
 
         ModItems.register(modEventBus);
         ModBlocks.register(modEventBus);

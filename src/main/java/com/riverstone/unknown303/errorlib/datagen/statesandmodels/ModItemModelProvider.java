@@ -21,6 +21,7 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
 //        simpleItem(ModItems.CORRUPTED_HEART);
 //        simpleBlockItem(ModBlocks.COMBO_BLOCK);
+        handheldItem(ModItems.DIAMOND_DAGGER);
     }
 
     private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
@@ -32,5 +33,11 @@ public class ModItemModelProvider extends ItemModelProvider {
     private ItemModelBuilder simpleBlockItem(RegistryObject<Block> block) {
         return withExistingParent(block.getId().getPath(),
                 new ResourceLocation(ErrorMod.MOD_ID, "block/" + block.getId().getPath()));
+    }
+
+    private ItemModelBuilder handheldItem(RegistryObject<Item> item) {
+        return withExistingParent(item.getId().getPath(),
+                new ResourceLocation("item/handheld")).texture("layer0",
+                new ResourceLocation(ErrorMod.MOD_ID, "item/" + item.getId().getPath()));
     }
 }
